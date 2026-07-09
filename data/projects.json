@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Benchy",
+        "orig_file_type": "3mf",
+        "filament_type": "PLA",
+        "filament_color": "Black",
+        "filament_used": 10.0,
+        "print_time": "1:10",
+        "status": "Completed",
+        "notes": "Print ran as expected. Ran with Nova Daily Print Settings V1."
+    }
+]

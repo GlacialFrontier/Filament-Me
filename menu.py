@@ -1,6 +1,6 @@
 
 import os
-from projects import view_projects
+import projects
 
 main_menu_options = [
     "Projects",
@@ -65,10 +65,12 @@ def project_menu():
         choice = input("Please select an option: ")
 
         if choice == "1":
-            view_projects()
+            projects.view_projects()
+            input("\nPress Enter to return...")
 
         elif choice == "2":
-            add_project()
+            projects.add_project()
+            input("\nPress Enter to return...")
 
         elif choice == "3":
             edit_project()
@@ -79,8 +81,6 @@ def project_menu():
         else:
             print("Invalid selection.")
 
-def add_project():
-    print("--- Adding New Project ---")
 
 def edit_project():
     print("--- Modify an existing Project")
@@ -141,5 +141,5 @@ def stats_menu():
             print("Invalid selection.")     
      
 def view_stats():
-    
+
     print("--- Viewing Stats ---")
