@@ -1,6 +1,7 @@
-
 import os
 import projects
+from utils import clear_screen, pause, return_prompt
+
 
 main_menu_options = [
     "Projects",
@@ -28,9 +29,6 @@ stats_sub_menu_options = [
     "back"
 ]
 
-# clear screen method
-def clear_screen():
-    os.system("cls" if os.name == "nt" else "clear")
 
 # create main Nav()
 def main_menu():
@@ -66,11 +64,11 @@ def project_menu():
 
         if choice == "1":
             projects.view_projects()
-            input("\nPress Enter to return...")
+            return_prompt()
 
         elif choice == "2":
             projects.add_project()
-            input("\nPress Enter to return...")
+            return_prompt()
 
         elif choice == "3":
             edit_project()
@@ -83,7 +81,7 @@ def project_menu():
 
 
 def edit_project():
-    print("--- Modify an existing Project")
+    print("--- Modify an existing Project ---")
 
 
 def filament_menu():

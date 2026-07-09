@@ -8,5 +8,25 @@
         "print_time": "1:10",
         "status": "Completed",
         "notes": "Print ran as expected. Ran with Nova Daily Print Settings V1."
+    },
+    {
+        "name": "Barbados - Med",
+        "orig_file_type": "obj",
+        "filament_type": "PLA",
+        "filament_color": "Blue - Matte",
+        "filament_used": 50.0,
+        "print_time": "2:15",
+        "status": "Completed",
+        "notes": "Look to make smoother & faster."
+    },
+    {
+        "name": "Slider Fidget Toy",
+        "orig_file_type": "3mf",
+        "filament_type": "PLA",
+        "filament_color": "Blue - Matte",
+        "filament_used": 25.0,
+        "print_time": "00:45",
+        "status": "Completed",
+        "notes": "Manual Pause needed to insert magnets for project to be completed."
     }
 ]
