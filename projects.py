@@ -6,6 +6,17 @@ from utils import get_input, clear_screen, get_int, get_float
 # store list of prints made
 project_list = load_projects()
 
+PROJECT_FIELDS = {
+                1: ("name", "Project Name"),
+                2: ("orig_file_type", "File Type"),
+                3: ("filament_type", "Filament Type"),
+                4: ("filament_color", "Filament Color"),
+                5: ("filament_used", "Filament Used"),
+                6: ("print_time", "Print Time"),
+                7: ("status", "Status"),
+                8: ("notes", "Notes")
+            }
+
 # view list of completed projects
 def view_projects():
     print("\n--- Current Projects ---")
@@ -18,7 +29,7 @@ def view_projects():
         print(f"{i}. {project['name']} ({project['status']})")
 
     proj_sel = get_int(
-        "\n Please select a Project Number to view the details ",
+        "\nPlease select a Project Number to view the details ",
         minimum=0, 
         maximum=len(project_list)
     )
@@ -131,3 +142,85 @@ def save_project(name: str, orig_file_type:str, fila_typ: str, fila_color: str, 
     
     view_project_details(project)
 
+# edit projects
+def edit_project():
+        print("\n--- Edit/Delete Projects ---\n")
+        print("Choose a project to Modify/Delete\n")
+
+        if not project_list:
+            print("No projects exist to edit.")
+            return
+
+        for i, project in enumerate(project_list, start=1):
+            print(f"{i}. {project['name']} ({project['status']})")
+
+        proj_sel = get_int(
+            "\nPlease select a Project Number you wish to edit: ",
+            minimum=0, 
+            maximum=len(project_list)
+        )
+    
+        if proj_sel is None or proj_sel == 0:
+            return
+    
+        project = project_list[proj_sel - 1]
+        view_project_details(project)
+
+        print(f"What would you like to do with {project['name']}?")
+        print("\n1. Edit Project")
+        print("\n2. Delete Project")
+        option_sel = get_int(
+            "\n\nSelect an option to contine. Select 3 to return to Project selection. " \
+            ""
+        )
+    
+        if option_sel is None or option_sel == 3:
+            return
+        
+        if option_sel == 1:
+
+            for menu_num, (field, label) in PROJECT_FIELDS.items():
+                print(f"{menu_num}. {label}")
+                
+            # get the number from the prompt
+            sel_proj_field = get_int(
+                "\nPlease select a Project Number you wish to edit: ",
+                minimum=1, 
+                maximum=len(PROJECT_FIELDS)
+            )
+
+            if sel_proj_field == None:
+                return
+            
+            # get current record.
+            editing_field = PROJECT_FIELDS[sel_proj_field][0]
+            curr_data = project[editing_field]
+            print("--- Field ----")
+            print(f"{editing_field}: {curr_data}")
+
+            # request new value.
+            if editing_field == "filament_used":
+                new_data = get_float("Please provide your update: ")
+            else:
+                new_data = get_input("Please provide your update: ")
+            
+            # update old value with new value.
+            if curr_data == new_data:
+                print("Data Unchanged")
+                return
+            
+            project[editing_field] = new_data
+
+            save_projects(project_list)
+
+            print("--- Project Updated Successfully ---")
+            print(f"Field Changed: {editing_field}")
+            print(f"\nPrevious Data: {curr_data}")
+            print(f"Updated Data: {new_data}")
+
+            # save records [not sure if needed]
+
+        if option_sel == 2:
+            print(f"Do you wish to delete: {project['name']}\n")
+            print("\n 1. Yes \n 2. No")
+            #delete method goes here

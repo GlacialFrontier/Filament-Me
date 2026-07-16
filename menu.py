@@ -71,7 +71,8 @@ def project_menu():
             return_prompt()
 
         elif choice == "3":
-            edit_project()
+            projects.edit_project()
+            return_prompt()
 
         elif choice == "4":
             return

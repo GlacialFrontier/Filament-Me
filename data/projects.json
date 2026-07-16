@@ -1,7 +1,7 @@
 [
     {
         "name": "Benchy",
-        "orig_file_type": "3mf",
+        "orig_file_type": "obj",
         "filament_type": "PLA",
         "filament_color": "Black",
         "filament_used": 10.0,
